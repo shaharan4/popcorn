@@ -8,6 +8,9 @@ export class ListItemsTable extends Component {
                 <div className="list_item_task_header">Task</div>
                 <div className="list_item_due_date_header">Due Date</div>
                 <div className="list_item_status_header">Status</div>
+                
+               
+                
                 {
                     this.props.todoList.items.map((todoItem)=>(
                         <ListItemCard 
