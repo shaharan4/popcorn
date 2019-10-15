@@ -82,6 +82,16 @@ body {
   position: absolute;
   left: 2%;
 }
+#list_header_container{
+  position: relative;
+  height: 50px;
+  grid-row-gap: 0px;
+  grid-column-gap: 50px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .list_item_task_header, .list_item_due_date_header, .list_item_status_header {
   position: absolute;
   top: 5%;

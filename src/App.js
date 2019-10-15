@@ -15,6 +15,7 @@ class App extends Component {
     currentScreen: AppScreen.HOME_SCREEN,
     todoLists: testTodoListData.todoLists,
     currentList: null
+    
   }
 
   goHome = () => {
@@ -28,6 +29,9 @@ class App extends Component {
     console.log("currentList: " + this.state.currentList);
     console.log("currentScreen: " + this.state.currentScreen);
   }
+
+  deleteList = () => {}
+
 
   render() {
     switch(this.state.currentScreen) {

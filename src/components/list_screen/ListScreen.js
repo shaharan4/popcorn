@@ -5,6 +5,8 @@ import ListTrash from './ListTrash'
 import PropTypes from 'prop-types';
 
 export class ListScreen extends Component {
+    
+
     getListName() {
         if (this.props.todoList) {
             let name = this.props.todoList.name;
@@ -19,6 +21,16 @@ export class ListScreen extends Component {
             return this.props.todoList.owner;
         }
     }
+    updateListName(e){
+        let newName = e.target.value
+        this.props.todoList.name = newName
+    }
+    
+
+    updateListOwner(e){
+        let newOwner = e.target.value
+        this.props.todoList.owner = newOwner
+    }
     render() {
         return (
             <div id="todo_list">
@@ -28,15 +40,15 @@ export class ListScreen extends Component {
                     <div id="list_details_name_container" className="text_toolbar">
                         <span id="list_name_prompt">Name:</span>
                         <input 
-                            value={this.getListName()} 
-                            type="text" 
+                            defaultValue={this.getListName()} 
+                            type="text" onChange={e => this.updateListName(e)}
                             id="list_name_textfield" />
                     </div>
                     <div id="list_details_owner_container" className="text_toolbar">
                         <span id="list_owner_prompt">Owner:</span>
                         <input 
-                            value={this.getListOwner()}
-                            type="text" 
+                            defaultValue={this.getListOwner()}
+                            type="text" onChange = {e => this.updateListOwner(e)}
                             id="list_owner_textfield" />
                     </div>
                 </div>
