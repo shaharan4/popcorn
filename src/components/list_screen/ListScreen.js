@@ -23,19 +23,29 @@ export class ListScreen extends Component {
     }
     updateListName(e){
         let newName = e.target.value
+        if(newName.length == ''){
+            this.props.todoList.name = "Unknown";
+        }
+        else{
         this.props.todoList.name = newName
+        }
     }
     
 
     updateListOwner(e){
         let newOwner = e.target.value
+        if(newOwner == ''){
+            this.props.todoList.owner = "Unknown";
+        }
+        else{
         this.props.todoList.owner = newOwner
+        }
     }
     render() {
         return (
             <div id="todo_list">
                 <ListHeading goHome={this.props.goHome} />
-                <ListTrash />
+                <ListTrash deleteList ={this.props.deleteList}/>
                 <div id="list_details_container">
                     <div id="list_details_name_container" className="text_toolbar">
                         <span id="list_name_prompt">Name:</span>
@@ -52,7 +62,8 @@ export class ListScreen extends Component {
                             id="list_owner_textfield" />
                     </div>
                 </div>
-                <ListItemsTable todoList={this.props.todoList} />
+                <ListItemsTable todoList={this.props.todoList}
+                                loadList={this.props.loadList} />
             </div>
         )
     }

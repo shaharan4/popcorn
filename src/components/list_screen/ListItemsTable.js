@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ListItemCard from './ListItemCard'
 
 export class ListItemsTable extends Component {
+    
     render() {
         return (
             <div id="list_items_container">
@@ -16,7 +17,9 @@ export class ListItemsTable extends Component {
                     this.props.todoList.items.map((todoItem)=>(
                         <ListItemCard 
                             key={todoItem.key}
-                            listItem={todoItem} />
+                            listItem={todoItem}
+                            todoList={this.props.todoList}
+                            loadList={this.props.loadList} />
                     ))
                 }
             </div>

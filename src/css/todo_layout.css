@@ -123,6 +123,8 @@ body {
   text-align: center;
   border-radius: 5px;
   margin: 1%;
+  position: relative;
+  left:85%;
 }
 .list_item_add_card {
   text-align: center;

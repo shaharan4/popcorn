@@ -19,8 +19,16 @@ class App extends Component {
   }
 
   goHome = () => {
-    this.setState({currentScreen: AppScreen.HOME_SCREEN});
-    this.setState({currentList: null});
+    if(this.state.todoLists.includes(this.state.currentList)){
+      this.state.todoLists.splice(this.state.todoLists.indexOf(this.state.currentList),1);
+      this.state.todoLists.unshift(this.state.currentList);
+      this.setState({currentScreen: AppScreen.HOME_SCREEN});
+      this.setState({currentList: null});
+    }
+    else{
+      this.setState({currentScreen: AppScreen.HOME_SCREEN});
+      this.setState({currentList: null});
+    }
   }
 
   loadList = (todoListToLoad) => {
@@ -29,8 +37,13 @@ class App extends Component {
     console.log("currentList: " + this.state.currentList);
     console.log("currentScreen: " + this.state.currentScreen);
   }
+  deleteList =() => {
+    this.state.todoLists.splice(this.state.todoLists.indexOf(this.state.currentList), 1);
+    this.goHome();
+  }
 
-  deleteList = () => {}
+  
+
 
 
   render() {
@@ -42,7 +55,10 @@ class App extends Component {
       case AppScreen.LIST_SCREEN:            
         return <ListScreen
           goHome={this.goHome.bind(this)}
-          todoList={this.state.currentList} />;
+          deleteList={this.deleteList}
+          todoList={this.state.currentList}
+          loadList={this.loadList} />;
+          
       case AppScreen.ITEM_SCREEN:
         return <ItemScreen />;
       default:

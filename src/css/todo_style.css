@@ -114,7 +114,7 @@ body {
   font-size: 24pt;
 }
 .list_item_task_header:hover, .list_item_due_date_header:hover, .list_item_status_header:hover {
- cursor: pointer; 
+ color: var(--swatch-primary); 
  
 }
 .list_item_task_header {}
