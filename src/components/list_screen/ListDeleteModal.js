@@ -11,7 +11,8 @@ export class ListDeleteModal extends Component {
             return null;
         }
         return (
-            <div className="modalBackground">
+            <div className="modal_container">
+                <div className="modalBackground"></div>
                 <div className="deleteListModal">
                     <p>Delete list?</p>
                     Are you sure you want to delete this list?<br></br><br></br>

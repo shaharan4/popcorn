@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 export class ItemScreen extends Component {
     render() {
         return (
-            <div>
-                THIS HAS NOTHING SO FAR!
+            <div id='todo_item'>
+                
             </div>
         )
     }

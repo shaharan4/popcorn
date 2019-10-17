@@ -51,7 +51,9 @@ export class ListScreen extends Component {
         console.log(this.state.showDialog)
     }
     
-   
+    confirmDelete = () =>{
+        this.props.deleteList();
+    }
     cancelDelete = () =>{
         this.setState({showDialog: false});
     }
@@ -60,7 +62,7 @@ export class ListScreen extends Component {
             <div id="todo_list">
                 <ListHeading goHome={this.props.goHome} />
                 <ListTrash showModalDeleteList={this.showModalDeleteList}/>
-                <ListDeleteModal show={this.state.showDialog}confirmDelete={this.props.deleteList} 
+                <ListDeleteModal show={this.state.showDialog}confirmDelete={this.confirmDelete} 
                 cancelDelete={this.cancelDelete}></ListDeleteModal>
                 <div id="list_details_container">
                     <div id="list_details_name_container" className="text_toolbar">
@@ -79,7 +81,8 @@ export class ListScreen extends Component {
                     </div>
                 </div>
                 <ListItemsTable todoList={this.props.todoList}
-                                loadList={this.props.loadList} />
+                                loadList={this.props.loadList}
+                                addItem={this.props.addItem} />
             </div>
         )
     }

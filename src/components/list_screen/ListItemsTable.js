@@ -3,6 +3,9 @@ import ListItemCard from './ListItemCard'
 
 export class ListItemsTable extends Component {
     
+    addItem = () => {
+        
+    }
     render() {
         return (
             <div id="list_items_container">
@@ -22,6 +25,7 @@ export class ListItemsTable extends Component {
                             loadList={this.props.loadList} />
                     ))
                 }
+                <button className="list_item_add_card" onClick={this.props.addItem}><b>+</b></button>
             </div>
         )
     }

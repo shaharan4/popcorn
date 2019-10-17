@@ -41,6 +41,21 @@ class App extends Component {
     this.state.todoLists.splice(this.state.todoLists.indexOf(this.state.currentList), 1);
     this.goHome();
   }
+  newList = () => {
+
+    var newList = {"key": 0,
+                   "name": "Unknown",
+                   "owner": "Unknown",
+                   "items": []}
+    this.state.todoLists.unshift(newList);
+    this.setState({currentList: newList});
+    this.loadList(newList);
+  
+  }
+  addItem = (todoList) => {
+    this.setState({currentScreen: AppScreen.ITEM_SCREEN})
+    
+  }
 
   
 
@@ -51,16 +66,20 @@ class App extends Component {
       case AppScreen.HOME_SCREEN:
         return <HomeScreen 
         loadList={this.loadList.bind(this)} 
-        todoLists={this.state.todoLists} />;
+        todoLists={this.state.todoLists}
+        newList={this.newList} />;
       case AppScreen.LIST_SCREEN:            
         return <ListScreen
           goHome={this.goHome.bind(this)}
           deleteList={this.deleteList}
           todoList={this.state.currentList}
-          loadList={this.loadList} />;
+          loadList={this.loadList}
+          addItem={this.addItem} />;
           
       case AppScreen.ITEM_SCREEN:
-        return <ItemScreen />;
+        return <ItemScreen 
+          currListItems={this.state.currentList.items}
+        />;
       default:
         return <div>ERROR</div>;
     }
