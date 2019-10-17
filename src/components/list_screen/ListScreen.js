@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import ListHeading from './ListHeading'
 import ListItemsTable from './ListItemsTable'
 import ListTrash from './ListTrash'
+import ListDeleteModal from './ListDeleteModal'
 import PropTypes from 'prop-types';
 
 export class ListScreen extends Component {
-    
+    state = {
+        showDialog: false
+    }
 
     getListName() {
         if (this.props.todoList) {
@@ -30,6 +33,7 @@ export class ListScreen extends Component {
         this.props.todoList.name = newName
         }
     }
+
     
 
     updateListOwner(e){
@@ -41,11 +45,23 @@ export class ListScreen extends Component {
         this.props.todoList.owner = newOwner
         }
     }
+    showModalDeleteList= () => {
+
+        this.setState({showDialog: true})
+        console.log(this.state.showDialog)
+    }
+    
+   
+    cancelDelete = () =>{
+        this.setState({showDialog: false});
+    }
     render() {
         return (
             <div id="todo_list">
                 <ListHeading goHome={this.props.goHome} />
-                <ListTrash deleteList ={this.props.deleteList}/>
+                <ListTrash showModalDeleteList={this.showModalDeleteList}/>
+                <ListDeleteModal show={this.state.showDialog}confirmDelete={this.props.deleteList} 
+                cancelDelete={this.cancelDelete}></ListDeleteModal>
                 <div id="list_details_container">
                     <div id="list_details_name_container" className="text_toolbar">
                         <span id="list_name_prompt">Name:</span>

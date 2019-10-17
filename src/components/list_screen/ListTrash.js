@@ -4,7 +4,7 @@ export class ListTrash extends Component {
     render() {
         return (
             <div id="list_trash"
-                onClick={this.props.deleteList}
+                onClick={this.props.showModalDeleteList}
                 >
                     &#128465;
             </div>
