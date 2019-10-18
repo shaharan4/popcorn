@@ -47,10 +47,10 @@ export class ListItemCard extends Component {
                     Pending
                 </div>}
                 {this.props.todoList.items.indexOf(this.props.listItem) == 0 ?
-                <button className="list_item_card_button disabled" onClick={this.moveUpList}>⇧</button>:
+                <button className="list_item_card_button disabled" disabled={true} onClick={this.moveUpList}>⇧</button>:
                 <button className="list_item_card_button" onClick={this.moveUpList}>⇧</button>}
                 {this.props.todoList.items.indexOf(this.props.listItem) == this.props.todoList.items.length-1 ?
-                <button className="list_item_card_button disabled" onClick={this.moveDownList}>⇩</button>:
+                <button className="list_item_card_button disabled" disabled ={true} onClick={this.moveDownList}>⇩</button>:
                 <button className="list_item_card_button" onClick={this.moveDownList}>⇩</button>}       
                 <button className="list_item_card_button" onClick={this.deleteListItem}>🗙</button>
                 
