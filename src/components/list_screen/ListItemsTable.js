@@ -10,7 +10,7 @@ export class ListItemsTable extends Component {
     sortFunction = (firstItem, secondItem) => {
         if (this.state.sort == 'task_decreasing'
             || this.state.sort == 'due_date_decreasing'
-            || this.state.currentSort == 'status_decreasing') {
+            || this.state.sort == 'status_decreasing') {
             let temp = firstItem;
             firstItem = secondItem;
             secondItem = temp;
@@ -36,8 +36,7 @@ export class ListItemsTable extends Component {
                 return 1;
             else
                 return 0;
-        }else if (this.state.sort == 'status'
-        || this.state.sort == 'status_decreasing'){
+        }else {
             if (firstItem.completed < secondItem.completed)
                 return -1;
             else if (firstItem.completed > secondItem.completed)

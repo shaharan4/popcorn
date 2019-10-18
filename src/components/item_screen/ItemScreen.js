@@ -23,7 +23,8 @@ export class ItemScreen extends Component {
     }
 
     updateCompleted = (e) =>{
-        this.setState({completed: e.target.value})
+        console.log("asd");
+        this.setState({completed: e.target.checked})
     }
     checkSubmit = () => {
         if(this.props.currentItemIndex==null){
@@ -63,6 +64,15 @@ export class ItemScreen extends Component {
         this.props.addItem(newItem);
 }
         
+
+componentDidMount() {
+    if(this.props.currentItemIndex!=null) {
+        this.setState({description: document.getElementById("item_description_textfield").value})
+        this.setState({assigned_to: document.getElementById("item_assigned_to_textfield").value})
+        this.setState({due_date: document.getElementById("item_due_date_picker").value})
+        this.setState({completed: document.getElementById("item_completed_checkbox").checked})
+    }
+}
     render() {
         if(this.props.currentItemIndex!=null){
             return (
@@ -95,8 +105,8 @@ export class ItemScreen extends Component {
                         <div id="item_completed_container" className="text_toolbar">
                             <span id="item_completed_prompt">Completed:</span>
                             <input
-                                defaultValue={this.props.currentList.items[this.props.currentItemIndex].completed}
-                                type="checkbox" onChange={e => this.updateCompleted}
+                                defaultChecked={this.props.currentList.items[this.props.currentItemIndex].completed}
+                                type="checkbox" onChange={e => this.updateCompleted(e)}
                                 id="item_completed_checkbox"/>
                         
                         </div>

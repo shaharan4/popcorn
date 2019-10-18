@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import testTodoListData from './TestTodoListData.json'
+import jsTps from './jsTps.js'
 import HomeScreen from './components/home_screen/HomeScreen'
 import ItemScreen from './components/item_screen/ItemScreen'
 import ListScreen from './components/list_screen/ListScreen'
@@ -59,9 +60,11 @@ class App extends Component {
     
   }
   showListScreen = () => {
+    this.setState({currentItemIndex: null})
     this.setState({currentScreen: AppScreen.LIST_SCREEN});
   }
   addItem = (newItem) => {
+    this.setState({currentItemIndex: null})
     this.loadList(this.state.currentList);
   }
   startEditItem = (index) =>{
