@@ -28,7 +28,7 @@ body {
 /* HOME SCREEN CONTROLS */
 #home_your_lists_container {}
 #home_your_lists_heading {
-  font-size: 24pt;
+  font-size: 28pt;
   font-weight: bold;
 }
 #home_your_lists_list {}
@@ -56,6 +56,7 @@ body {
 
 /* HOME SCREEN CLASSES */
 .home_list_link {
+  font-size: 18pt;
   color: var(--swatch-boundary);
   text-decoration: none;
 }

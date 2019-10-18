@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export class ListItemCard extends Component {
     
-    moveUpList = () =>{
+    moveUpList = (e) =>{
+        e.stopPropagation();
         let currIndex = this.props.todoList.items.indexOf(this.props.listItem);
         if(currIndex>=1){
             let temp = this.props.listItem;
@@ -13,7 +14,8 @@ export class ListItemCard extends Component {
 
     }
 
-    moveDownList = () =>{
+    moveDownList = (e) =>{
+        e.stopPropagation();
         let currIndex = this.props.todoList.items.indexOf(this.props.listItem);
         if(currIndex<this.props.todoList.items.length-1){
             let temp = this.props.listItem;
@@ -22,16 +24,22 @@ export class ListItemCard extends Component {
             this.props.loadList(this.props.todoList);
         }
     }
-    deleteListItem = () =>{
+    deleteListItem = (e) =>{
+        e.stopPropagation();
         let currIndex = this.props.todoList.items.indexOf(this.props.listItem);
         this.props.todoList.items.splice(currIndex, 1);
         this.props.loadList(this.props.todoList);
 
     }
+    editListItem = () => {
+        let itemIndex = this.props.todoList.items.indexOf(this.props.listItem);
+        this.props.startEditItem(itemIndex);
+
+    }
     render() {
         return (
 
-            <div className='list_item_card'>
+            <div className='list_item_card' onClick={this.editListItem}>
                 <div className='list_item_card_description'>
                     {this.props.listItem.description}
                 </div>

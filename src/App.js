@@ -15,7 +15,8 @@ class App extends Component {
     currentScreen: AppScreen.HOME_SCREEN,
     todoLists: testTodoListData.todoLists,
     currentList: null,
-    currentItem: null
+    currentItem: null,
+    currentItemIndex: null
     
   }
 
@@ -53,7 +54,7 @@ class App extends Component {
     this.loadList(newList);
   
   }
-  showItemScreen = (todoItem) => {
+  showItemScreen = () => {
     this.setState({currentScreen: AppScreen.ITEM_SCREEN});
     
   }
@@ -62,6 +63,13 @@ class App extends Component {
   }
   addItem = (newItem) => {
     this.loadList(this.state.currentList);
+  }
+  startEditItem = (index) =>{
+  
+    console.log(index);
+    
+    this.setState({currentItemIndex: index});
+    this.setState({currentScreen: AppScreen.ITEM_SCREEN});
   }
 
   
@@ -81,7 +89,9 @@ class App extends Component {
           deleteList={this.deleteList}
           todoList={this.state.currentList}
           loadList={this.loadList}
-          showItemScreen={this.showItemScreen} />;
+          showItemScreen={this.showItemScreen}
+          startEditItem={this.startEditItem}
+          updateCurrentItem={this.updateCurrentItem} />;
           
       case AppScreen.ITEM_SCREEN:
         return <ItemScreen 
@@ -90,6 +100,7 @@ class App extends Component {
           showListScreen={this.showListScreen}
           currentList={this.state.currentList}
           currentItem={this.state.currentItem}
+          currentItemIndex={this.state.currentItemIndex}
           addItem={this.addItem}
         />;
       default:

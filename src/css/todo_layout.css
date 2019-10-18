@@ -125,6 +125,7 @@ body {
   margin: 1%;
   position: relative;
   left:85%;
+  z-index: 10;
 }
 .list_item_add_card {
   left: 50%;
@@ -145,21 +146,21 @@ body {
 #item_description_textfield {
   position: absolute;
   left: 200px;
-  width: 1025px;
+  width: 1000px;
   height: 30px;
 }
 #item_assigned_to_prompt {}
 #item_assigned_to_textfield {
   position: absolute;
   left: 200px;
-  width: 1025px;
+  width: 1000px;
   height: 30px;
 }
 #item_due_date_prompt {}
 #item_due_date_picker {
   position: absolute;
   left: 200px;
-  width: 1025px;
+  width: 1000px;
   height: 30px;
 }
 #item_completed_prompt {}
