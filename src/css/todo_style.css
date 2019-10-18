@@ -155,6 +155,7 @@ body {
   color: var(--swatch-neutral);
 }
 .modalBackground {
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -162,37 +163,73 @@ body {
   right: 0;
   overflow: auto;
   background: gray;
+  z-index: -1;
 }
-
-
+.modalBackground.open{
+  opacity: 0;
+  z-index: 9;
+}
 .deleteListModal{
-  
-  transition: transform 1000ms ease-in-out;
-  transform: translateX(100%);
+  z-index: 10;
   position: fixed;
-  z-index: 1;
   left: 10%;
-  top: 40%;
+  top: 30%;
   text-align: center;
   width: 400px;
   height: 200px;
   overflow: auto;
   background-color: #e1e4cb;
+  transition: transform 1000ms ease-in;
+  transform: translateX(-200%);
+}
+.deleteListModal.open{
+transform: translateX(100%);
 }
 
 /* ITEM SCREEN CONTROLS */
-#item_heading {}
-#item_form_container {}
-#item_description_prompt {}
-#item_description_textfield {}
-#item_assigned_to_prompt {}
-#item_assigned_to_textfield {}
-#item_due_date_prompt {}
-#item_due_date_picker {}
-#item_completed_prompt {}
-#item_completed_checkbox {}
-#item_form_submit_button {}
-#item_form_cancel_button {}
+#item_heading {
+  font-weight: bold;
+  font-size: 24pt;
+
+}
+#item_form_container {
+}
+#item_description_prompt {
+  font-weight: bold;
+  font-size: 18pt;
+}
+#item_description_textfield {
+  font-size: 18pt;
+}
+#item_assigned_to_prompt {
+  font-weight: bold;
+  font-size: 18pt;
+}
+#item_assigned_to_textfield {
+  font-size: 18pt;
+}
+#item_due_date_prompt {
+  font-weight: bold;
+  font-size: 18pt;
+}
+#item_due_date_picker {
+  font-size: 18pt;
+}
+#item_completed_prompt {
+  font-weight: bold;
+  font-size: 18pt;
+}
+#item_completed_checkbox {
+  height: 5%;
+  width: 5%;
+  
+}
+#item_form_submit_button {
+  font-size: 18pt;
+}
+#item_form_cancel_button {
+  font-size: 18pt;
+}
 
 /* ITEM SCREEN CLASSES */
 .item_prompt {

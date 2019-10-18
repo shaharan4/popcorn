@@ -25,7 +25,7 @@ export class ListItemsTable extends Component {
                             loadList={this.props.loadList} />
                     ))
                 }
-                <button className="list_item_add_card" onClick={this.props.addItem}><b>+</b></button>
+                <button className="list_item_add_card" onClick={this.props.showItemScreen}><b>+</b></button>
             </div>
         )
     }

@@ -14,7 +14,8 @@ class App extends Component {
   state = {
     currentScreen: AppScreen.HOME_SCREEN,
     todoLists: testTodoListData.todoLists,
-    currentList: null
+    currentList: null,
+    currentItem: null
     
   }
 
@@ -52,9 +53,15 @@ class App extends Component {
     this.loadList(newList);
   
   }
-  addItem = (todoList) => {
-    this.setState({currentScreen: AppScreen.ITEM_SCREEN})
+  showItemScreen = (todoItem) => {
+    this.setState({currentScreen: AppScreen.ITEM_SCREEN});
     
+  }
+  showListScreen = () => {
+    this.setState({currentScreen: AppScreen.LIST_SCREEN});
+  }
+  addItem = (newItem) => {
+    this.loadList(this.state.currentList);
   }
 
   
@@ -74,11 +81,16 @@ class App extends Component {
           deleteList={this.deleteList}
           todoList={this.state.currentList}
           loadList={this.loadList}
-          addItem={this.addItem} />;
+          showItemScreen={this.showItemScreen} />;
           
       case AppScreen.ITEM_SCREEN:
         return <ItemScreen 
           currListItems={this.state.currentList.items}
+          loadList={this.loadList}
+          showListScreen={this.showListScreen}
+          currentList={this.state.currentList}
+          currentItem={this.state.currentItem}
+          addItem={this.addItem}
         />;
       default:
         return <div>ERROR</div>;
